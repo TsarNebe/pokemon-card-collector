@@ -1,11 +1,18 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../database');  // Инициализация соединения с базой данных
+const sequelize = require('../config/database');
 
 class User extends Model {}
 
 User.init({
-    username: DataTypes.STRING,
-    password: DataTypes.STRING,
+    username: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+    },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
 }, { sequelize, modelName: 'user' });
 
 module.exports = User;
