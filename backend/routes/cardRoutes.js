@@ -1,9 +1,8 @@
 const express = require('express');
-const { getCards } = require('../controllers/cardController');
 const Card = require('../models/Card');
+
 const router = express.Router();
 
-router.get('/cards', getCards);
 // Получить все карточки
 router.get('/', async (req, res) => {
     const cards = await Card.findAll();
@@ -19,4 +18,5 @@ router.post('/', async (req, res) => {
         res.status(400).json({ error: 'Ошибка добавления карточки' });
     }
 });
+
 module.exports = router;

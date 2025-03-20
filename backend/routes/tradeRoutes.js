@@ -1,9 +1,8 @@
 const express = require('express');
-const { createTrade } = require('../controllers/tradeController');
 const Trade = require('../models/Trade');
+
 const router = express.Router();
 
-router.post('/trade', createTrade);
 // Создать трейд
 router.post('/', async (req, res) => {
     try {
@@ -19,4 +18,5 @@ router.get('/', async (req, res) => {
     const trades = await Trade.findAll();
     res.json(trades);
 });
+
 module.exports = router;
